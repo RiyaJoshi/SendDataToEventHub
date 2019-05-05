@@ -93,41 +93,12 @@ namespace SendDataToEventHub
 
         }
 
-
-        //try
-        //{
-        //    var message = reader.ReadLine();
-        //    string json = reader.ReadLine();
-        //    Console.WriteLine("{0} > Sending message: {1}", DateTime.Now, json);
-        //    //eventHubClient.Send(new EventData(Encoding.UTF8.GetBytes(message)));
-        //    //eventHubClient.Send(new EventData(Encoding.UTF8.GetBytes(message)));
-        //    
-        //    // eventHubClient.Send(message).Wait();
-        //}
-        //catch (Exception exception)
-        //{
-        //    Console.ForegroundColor = ConsoleColor.Red;
-        //    Console.WriteLine("{0} > Exception: {1}", DateTime.Now, exception.Message);
-        //    Console.ResetColor();
-        //}
-        //
-
-
-        // }
-
-
-        //var jsonArray = JsonArray.Parse(st);
-        //dynamic array = JsonConvert.DeserializeObject(json);
-        //foreach (var item in array)
-        //{
-        //    Console.WriteLine("{0} {1}", item.temp, item.vcc);
-        //}
     
         static void Main(string[] args)
         {
             Program p = new Program();
            // p.filePathjson= "C:\\Users\\rijosh\\OneDrive - Microsoft\\learnings\\StreamAnalytics-POC\\UberData.json";
-            p.filePathcsv = "C:\\Users\\rijosh\\OneDrive - Microsoft\\learnings\\StreamAnalytics-POC\\UberData.csv";
+            p.filePathcsv = "C:\\Users\\rijosh\\OneDrive - Microsoft\\learnings\\StreamAnalytics-POC\\CabData.csv";
             p.sendMsg(p.filePathcsv);
 
         }
