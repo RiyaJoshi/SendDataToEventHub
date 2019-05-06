@@ -18,7 +18,7 @@ namespace SendDataToEventHub
         private string filePathjson;
         private string filePathcsv;
         static string eventHubName = "<eventhub name>";
-        static string connectionString = "Endpoint=sb://<event hub name>/;SharedAccessKeyName=<policy>;SharedAccessKey=<access key>";
+        static string connectionString = "Endpoint=sb://<eventhub name>/;SharedAccessKeyName=<policy>;SharedAccessKey=<access key>";
 
         public void sendMsg(string filePath)
         {
