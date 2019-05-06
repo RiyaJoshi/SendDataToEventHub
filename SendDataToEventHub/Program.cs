@@ -17,31 +17,24 @@ namespace SendDataToEventHub
     {
         private string filePathjson;
         private string filePathcsv;
-        static string eventHubName = "testpoceventhub";
-        static string connectionString = "Endpoint=sb://testpocns.servicebus.windows.net/;SharedAccessKeyName=testpocPolicy;SharedAccessKey=vj1DZyYn5UIxmZqh2RMZAyweCFH9xjj8ji2U/fGhPBk=";
+        static string eventHubName = "<eventhub name>";
+        static string connectionString = "Endpoint=sb://<event hub name>/;SharedAccessKeyName=<policy>;SharedAccessKey=<access key>";
 
         public void sendMsg(string filePath)
         {
 
 
             var eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, eventHubName);
-            //var reader = new StreamReader(File.OpenRead(filePath))
             StreamReader reader = new StreamReader(File.OpenRead(filePath));
-            //JavaScriptSerializer serializer = new JavaScriptSerializer();
-            //List<string> searchList = new List<string>();
-            //while (!reader.EndOfStream)
-            //{
-            //var line = reader.ReadLine();
-            //var jsonArray = JsonArray.Parse(st);
+
 
 
             try
             {
                StreamReader sr = new StreamReader(filePath);
-                //var csv = new List<string[]>(); // or, List<YourClass>
-                
+ 
                var csvnew = new List<string>();
-               //var lines = System.IO.File.ReadAllLines(filePath);
+
                string headerLine = sr.ReadLine();
                string line;
                while ((line = sr.ReadLine()) != null)
@@ -56,22 +49,7 @@ namespace SendDataToEventHub
                     string jsonN = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(dictionary);
                     Console.WriteLine("Sending message: {0}",jsonN);
                     eventHubClient.Send(new EventData(Encoding.UTF8.GetBytes(jsonN)));
-                    // csv.Add(line.Split(',')); // or, populate YourClass    
-                    // Console.WriteLine(csv[0],csv[1]);
 
-                    // string val = "dispatching_base_number"+ " : " + csv[0][0] + " available_vehicles"+" : " + csv[0][2] + " vehicles_in_trips "+ ": " + csv[0][3] + " Cancellations "+ " : " + csv[0][4];
-                    //csvnew.Add(" dispatching_base_number : " + csv[0][0]);
-                    //csvnew.Add(" available_vehicles : " + csv[0][2]);
-                    //csvnew.Add(" vehicles_in_trips : " + csv[0][3]);
-                    //csvnew.Add(" Cancellations : " + csv[0][3]);
-
-
-                    //Console.WriteLine(val);
-                    // string jsonN = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(val);
-                    // Console.WriteLine("Sending message: {0}",jsonN);
-                    //eventHubClient.Send(new EventData(Encoding.UTF8.GetBytes(jsonN)));
-                    //csv.Clear();
-                    //csvnew.Clear();
                    Thread.Sleep(200);
                }
 
@@ -98,7 +76,7 @@ namespace SendDataToEventHub
         {
             Program p = new Program();
            // p.filePathjson= "C:\\Users\\rijosh\\OneDrive - Microsoft\\learnings\\StreamAnalytics-POC\\UberData.json";
-            p.filePathcsv = "C:\\Users\\rijosh\\OneDrive - Microsoft\\learnings\\StreamAnalytics-POC\\CabData.csv";
+            p.filePathcsv = "C:\\Users\\*\\OneDrive - Microsoft\\*\\StreamAnalytics-POC\\CabData.csv"; // file path
             p.sendMsg(p.filePathcsv);
 
         }
